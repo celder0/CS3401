@@ -4,6 +4,7 @@ import java.util.*;
 public class Assignment2 {
 
 	public static void main(String[] args) {
+		vehicleTest();
 		hashSetTest();
 		linkedHashSetTest();
 		queueTest();
@@ -11,6 +12,52 @@ public class Assignment2 {
 		arrayListTest();
 		hashMapTest();
 		treeMapTest();
+	}
+	
+	private static void vehicleTest()
+	{
+		Sedan sedan = new Sedan("white", 100.0, "wind");
+		Motorcycle motorcycle = new Motorcycle("black", 120.0, "flash");
+		Truck truck = new Truck("yellow", 88.0, "grandma");
+		Vehicle currentVehicle;
+		
+		TreeSet<Vehicle> compareSpeed = new TreeSet<Vehicle>(new VehicleComparator_Speed());
+		TreeSet<Vehicle> compareColor = new TreeSet<Vehicle>(new VehicleComparator_Color());
+		TreeSet<Vehicle> compareWheels = new TreeSet<Vehicle>(new VehicleComparator_Wheels());
+		
+		compareSpeed.add(sedan);
+		compareColor.add(sedan);
+		compareWheels.add(sedan);
+		compareSpeed.add(motorcycle);
+		compareColor.add(motorcycle);
+		compareWheels.add(motorcycle);
+		compareSpeed.add(truck);
+		compareColor.add(truck);
+		compareWheels.add(truck);
+		
+		System.out.println("Order of speed:");
+		while((currentVehicle = compareSpeed.pollFirst()) != null)
+		{
+			System.out.print(currentVehicle.toString().substring(0, currentVehicle.toString().indexOf("@")));
+			System.out.print(", " + currentVehicle.color);
+			System.out.println(", " + currentVehicle.nickname);
+		}
+		
+		System.out.println("Order of color:");
+		while((currentVehicle = compareColor.pollFirst()) != null)
+		{
+			System.out.print(currentVehicle.toString().substring(0, currentVehicle.toString().indexOf("@")));
+			System.out.print(", " + currentVehicle.color);
+			System.out.println(", " + currentVehicle.nickname);
+		}
+		
+		System.out.println("Order of number of wheels:");
+		while((currentVehicle = compareWheels.pollFirst()) != null)
+		{
+			System.out.print(currentVehicle.toString().substring(0, currentVehicle.toString().indexOf("@")));
+			System.out.print(", " + currentVehicle.color);
+			System.out.println(", " + currentVehicle.nickname);
+		}
 	}
 	
 	private static void hashSetTest()
