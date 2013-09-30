@@ -31,7 +31,7 @@ class VehicleComparator_Color implements Comparator<Vehicle>
 		if(vh1.color.charAt(0) < vh2.color.charAt(0)) return -1;
 		if(vh1.color.charAt(0) == vh2.color.charAt(0))
 		{
-			return compare(vh1.color.substring(1), vh2.color.substring(0));
+			return compare(vh1.color.substring(1), vh2.color.substring(1));
 		}
 		return 1;
 	}
